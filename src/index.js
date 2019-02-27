@@ -21,6 +21,7 @@ class Mailchimp extends React.Component {
   sendData(url) {
     this.setState({ status: "sending" });
     jsonp(url, { param: "c" }, (err, data) => {
+      console.log(err, data)
       if (data.msg.includes("already subscribed")) {
         this.setState({ status: 'duplicate' });
       } else if (err) {
